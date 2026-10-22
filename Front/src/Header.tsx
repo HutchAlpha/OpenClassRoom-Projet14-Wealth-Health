@@ -4,11 +4,13 @@ import './scss/_Header.scss';
 export default function Header() {
     return (
         <header className="header">
-            <img src={logo} alt="Logo Wealth Health" className="header__logo" />
+            <div className="header__divlogo">
+                <img src={logo} alt="Logo Wealth Health" className="header__logo" />
+            </div>
 
-            <div className="titre">
-                <h1 className="titre__h1">HRnet</h1>
+            <div className="header__divTitre">
+                <h1 className="header__titre">Intranet HRnet</h1>
             </div>
         </header>
-    )
+    );
 }
