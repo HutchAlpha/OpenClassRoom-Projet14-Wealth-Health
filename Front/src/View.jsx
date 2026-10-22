@@ -6,7 +6,6 @@ export default function View() {
     <>
 
         <div class="container">
-            <a href="#">View Current Employees</a>
             <h2>Create Employee</h2>
             <form action="#" id="create-employee">
                 <label for="first-name">First Name</label>
