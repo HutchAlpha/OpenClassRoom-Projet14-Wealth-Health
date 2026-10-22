@@ -1,57 +1,61 @@
-
 import './scss/_View.scss';
 
 export default function View() {
     return (
-    <>
+        <>
+            <div className="view">
+                <div className="view__form-container">
+                    <h2 className="view__title">Create Employee</h2>
 
-        <div class="container">
-            <h2>Create Employee</h2>
-            <form action="#" id="create-employee">
-                <label for="first-name">First Name</label>
-                <input type="text" id="first-name" />
+                    <form action="#" id="create-employee" className="view__form">
+                        <label htmlFor="first-name" className="view__label">First Name</label>
+                        <input type="text" id="first-name" name="first-name" className="view__input"/>
 
-                <label for="last-name">Last Name</label>
-                <input type="text" id="last-name" />
+                        <label htmlFor="last-name" className="view__label">Last Name</label>
+                        <input type="text" id="last-name" name="last-name" className="view__input"/>
 
-                <label for="date-of-birth">Date of Birth</label>
-                <input id="date-of-birth" type="text" />
+                        <label htmlFor="date-of-birth" className="view__label">Date of Birth</label>
+                        <input type="date" id="date-of-birth" name="date-of-birth" className="view__input"/>
 
-                <label for="start-date">Start Date</label>
-                <input id="start-date" type="text" />
+                        <label htmlFor="start-date" className="view__label">Start Date</label>
+                        <input type="date" id="start-date" name="start-date" className="view__input"/>
 
-                <fieldset class="address">
-                    <legend>Address</legend>
+                        <fieldset className="view__address">
+                            <legend className="view__address-title">Address</legend>
 
-                    <label for="street">Street</label>
-                    <input id="street" type="text" />
+                            <label htmlFor="street" className="view__label">Street</label>
+                            <input type="text" id="street" name="street" className="view__input"/>
 
-                    <label for="city">City</label>
-                    <input id="city" type="text" />
+                            <label htmlFor="city" className="view__label">City</label>
+                            <input type="text" id="city" name="city" className="view__input"/>
 
-                    <label for="state">State</label>
-                    <select name="state" id="state"></select>
+                            <label htmlFor="state" className="view__label">State</label>
+                            <select name="state" id="state" className="view__select">
+                                <option value="">Select a state</option>
+                            </select>
 
-                    <label for="zip-code">Zip Code</label>
-                    <input id="zip-code" type="number" />
-                </fieldset>
+                            <label htmlFor="zip-code" className="view__label">Zip Code</label>
+                            <input type="number" id="zip-code" name="zip-code" className="view__input"/>
+                        </fieldset>
 
-                <label for="department">Department</label>
-                <select name="department" id="department">
-                    <option>Sales</option>
-                    <option>Marketing</option>
-                    <option>Engineering</option>
-                    <option>Human Resources</option>
-                    <option>Legal</option>
-                </select>
-            </form>
+                        <label htmlFor="department" className="view__label">Department</label>
+                        <select name="department" id="department" className="view__select">
+                            <option value="">Select a department</option>
+                            <option value="sales">Sales</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="engineering">Engineering</option>
+                            <option value="human-resources">Human Resources</option>
+                            <option value="legal">Legal</option>
+                        </select>
 
-            <button onclick="saveEmployee()">Save</button>
-    </div>
-    
-    <div id="confirmation" class="modal">Employee Created!</div>    
-        
-    </>
-    )
+                        <button type="button" id="SaveForm" className="view__save-button">
+                            Save
+                        </button>
+                    </form>
+                </div>
+
+                <div id="confirmation" className="view__modal"></div>
+            </div>
+        </>
+    );
 }
-
