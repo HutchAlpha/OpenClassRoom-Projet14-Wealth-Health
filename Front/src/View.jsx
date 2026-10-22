@@ -1,13 +1,10 @@
 
-import './scss/_View.scss'
+import './scss/_View.scss';
 
 export default function View() {
     return (
     <>
 
-        <div class="title">
-            <h1>HRnet</h1>
-        </div>
         <div class="container">
             <a href="#">View Current Employees</a>
             <h2>Create Employee</h2>
