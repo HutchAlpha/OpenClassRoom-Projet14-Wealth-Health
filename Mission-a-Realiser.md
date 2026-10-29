@@ -51,4 +51,8 @@ Tu dois écrire le Readme sur ton Plugin créer
 C'est tout ! Une fois que l'application HRnet en React fonctionne, tu peux publier le composant React sur npm sous forme de package et partager le lien pour que nous puissions l'utiliser si nécessaire. Si tu as du mal avec npm, tu peux utiliser les paquets GitHub comme alternative.
 
 
+# Bonus 
+
+Utiliser Redux Persist
+
 

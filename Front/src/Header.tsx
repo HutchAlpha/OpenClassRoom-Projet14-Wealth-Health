@@ -1,5 +1,6 @@
 import logo from './assets/logo.png';
 import './scss/_Header.scss';
+import { Link } from "react-router";
 
 export default function Header() {
     return (
@@ -16,8 +17,8 @@ export default function Header() {
                 <div className="header__BarreNav">
                     <nav className="header__nav" aria-label="Navigation principale">
                         <ul className="header__nav-list">
-                            <li><a href="#" className="header__nav-link">Home</a></li>
-                            <li><a href="#" className="header__nav-link">Employee</a></li>
+                            <li><a href="/" className="header__nav-link">Home</a></li>
+                            <li><a href="/salarie" className="header__nav-link">Employee</a></li>
                         </ul>
                     </nav>
                 </div>
