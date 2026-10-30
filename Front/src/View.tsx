@@ -1,15 +1,38 @@
 import './scss/_View.scss';
-
+import { useState } from 'react';
 import { usStates } from "./Donnee/UsState.tsx";
 
+
 export default function View() {
+
+
+    const [formDonneeEmployee, setformDonneeEmployee] = useState({
+        firstName: "",
+        lastName: "",
+        dateOfBirth: "",
+        startDate: "",
+        street: "",
+        city: "",
+        state: "",
+        zipCode: "",
+        department: "",
+    });
+    
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        console.log('Données récoltées :', formDonneeEmployee);
+
+
+    };    
+
     return (
         <>
             <div className="view">
                 <div className="view__form-container">
                     <h2 className="view__title">Create Employee</h2>
 
-                    <form action="#" id="create-employee" className="view__form">
+                    <form onSubmit={handleSubmit} action="#" id="create-employee" className="view__form">
                         <label htmlFor="first-name" className="view__label">First Name</label>
                         <input type="text" id="first-name" name="first-name" className="view__input"/>
 
