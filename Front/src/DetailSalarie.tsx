@@ -18,14 +18,22 @@ export default function DetailSalarie() {
 
     useEffect(() => {
         try {
-            const stored = localStorage.getItem('employees');
-            const parsed = stored ? (JSON.parse(stored) as Employee[]) : [];
-            setEmployees(Array.isArray(parsed) ? parsed : []);
-        } catch {
+        const stored = localStorage.getItem("DonneeUser");
+
+        if (stored) {
+            const parsed = JSON.parse(stored);
+
+            if (Array.isArray(parsed)) {
+            setEmployees(parsed);
+            } else {
             setEmployees([]);
+            }
+        }
+        } catch (error) {
+        console.error("Erreur lors de la lecture des employés :", error);
+        setEmployees([]);
         }
     }, []);
-
     return (
         <div className="detail-salarie">
             <h2 className="detail-salarie__title">Current Employees</h2>
@@ -35,15 +43,15 @@ export default function DetailSalarie() {
                 <table className="detail-salarie__table">
                     <thead>
                         <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Start Date</th>
-                            <th>Department</th>
-                            <th>Date of Birth</th>
-                            <th>Street</th>
-                            <th>City</th>
-                            <th>State</th>
-                            <th>Zip Code</th>
+                            <th id="First Name">First Name</th>
+                            <th id="Last Name">Last Name</th>
+                            <th id="Start Date">Start Date</th>
+                            <th id="Department">Department</th>
+                            <th id="Date of Birth">Date of Birth</th>
+                            <th id="Street">Street</th>
+                            <th id="City">City</th>
+                            <th id="State">State</th>
+                            <th id="Zip Code">Zip Code</th>
                         </tr>
                     </thead>
                     <tbody>
