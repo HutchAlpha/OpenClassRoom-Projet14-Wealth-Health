@@ -1,5 +1,7 @@
 import './scss/_View.scss';
 
+import { usStates } from "./Donnee/UsState.tsx";
+
 export default function View() {
     return (
         <>
@@ -31,7 +33,11 @@ export default function View() {
 
                             <label htmlFor="state" className="view__label">State</label>
                             <select name="state" id="state" className="view__select">
-                                <option value="">Select a state</option>
+                            {usStates.map((state) => (
+                                <option key={state.abbreviation} value={state.abbreviation}>
+                                    {state.name}
+                                </option>
+                                ))}
                             </select>
 
                             <label htmlFor="zip-code" className="view__label">Zip Code</label>
