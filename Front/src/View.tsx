@@ -1,6 +1,7 @@
 import './scss/_View.scss';
 import { useState } from 'react';
 import { usStates } from "./Donnee/UsState.tsx";
+import {GestionUser, GestionAdress, GestionToken, GestionConnexion} from './redux/DonneeSalarie.tsx';
 
 export default function View() {
     
@@ -17,7 +18,40 @@ export default function View() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        console.log('Données récoltées :', firstName, lastName, dateOfBirth, startDate, street, city, state, zipCode, department);
+        async function EmployeeData() {
+            const  FormDonneeEmployee = {
+                firstName: firstName,
+                lastName: lastName,
+                dateOfBirth: dateOfBirth,
+                startDate: startDate,
+                street: street,
+                city: city,
+                state: state,
+                zipCode: zipCode,
+                department: department
+            };
+
+            if (firstName === '' || lastName === '' || dateOfBirth === '' || startDate === '' || street === '' || city === '' || state === '' || zipCode === '' || department === '') {
+                console.error('Tous les champs sont requis.');
+                return;
+            }
+
+            console.log('Données récoltées :', FormDonneeEmployee);
+            
+            try {
+                const stored = localStorage.getItem("DonneeUser");
+                let employees = stored ? JSON.parse(stored) : [];
+                employees.push(FormDonneeEmployee);
+                localStorage.setItem("DonneeUser", JSON.stringify(employees));
+                console.log('Données sauvegardées dans le localStorage.');
+            } catch (error) {
+                console.error('Erreur lors de la sauvegarde des données dans le localStorage :', error);
+            }
+
+        }
+
+
+        EmployeeData();
     };
     return (
         <>
