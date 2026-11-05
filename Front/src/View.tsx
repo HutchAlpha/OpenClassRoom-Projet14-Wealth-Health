@@ -5,8 +5,19 @@ import { usStates } from "./Donnee/UsState.tsx";
 
 export default function View() {
 
-
-    const [formDonneeEmployee, setformDonneeEmployee] = useState({
+    interface FormDonneeEmployee {
+        firstName: string;
+        lastName: string;
+        dateOfBirth: string;
+        startDate: string;
+        street: string;
+        city: string;
+        state: string;
+        zipCode: string;
+        department: string;
+    }
+    
+    const [formDonneeEmployee, setformDonneeEmployee] = useState<FormDonneeEmployee>({
         firstName: "",
         lastName: "",
         dateOfBirth: "",
@@ -17,10 +28,13 @@ export default function View() {
         zipCode: "",
         department: "",
     });
+
     
     const handleSubmit = (event) => {
         event.preventDefault();
 
+    
+        
         console.log('Données récoltées :', formDonneeEmployee);
 
 
@@ -77,9 +91,7 @@ export default function View() {
                             <option value="legal">Legal</option>
                         </select>
 
-                        <button type="button" id="SaveForm" className="view__save-button">
-                            Save
-                        </button>
+                        <button type="button" id="SaveForm" className="view__save-button">Save</button>
                     </form>
                 </div>
 
