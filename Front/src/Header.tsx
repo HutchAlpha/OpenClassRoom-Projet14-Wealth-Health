@@ -1,6 +1,6 @@
 import logo from './assets/logo.png';
 import './scss/_Header.scss';
-import { Link } from "react-router";
+
 
 export default function Header() {
     return (

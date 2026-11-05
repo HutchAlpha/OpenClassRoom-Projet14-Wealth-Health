@@ -2,44 +2,23 @@ import './scss/_View.scss';
 import { useState } from 'react';
 import { usStates } from "./Donnee/UsState.tsx";
 
-
 export default function View() {
-
-    interface FormDonneeEmployee {
-        firstName: string;
-        lastName: string;
-        dateOfBirth: string;
-        startDate: string;
-        street: string;
-        city: string;
-        state: string;
-        zipCode: string;
-        department: string;
-    }
     
-    const [formDonneeEmployee, setformDonneeEmployee] = useState<FormDonneeEmployee>({
-        firstName: "",
-        lastName: "",
-        dateOfBirth: "",
-        startDate: "",
-        street: "",
-        city: "",
-        state: "",
-        zipCode: "",
-        department: "",
-    });
-
+        const [firstName, setFirstName] = useState('');
+        const [lastName, setLastName] = useState('');
+        const [dateOfBirth, setDateOfBirth] = useState('');
+        const [startDate, setStartDate] = useState('');
+        const [street, setStreet] = useState('');
+        const [city, setCity] = useState('');
+        const [state, setState] = useState('');
+        const [zipCode, setZipCode] = useState('');
+        const [department, setDepartment] = useState('');
     
     const handleSubmit = (event) => {
         event.preventDefault();
 
-    
-        
-        console.log('Données récoltées :', formDonneeEmployee);
-
-
-    };    
-
+        console.log('Données récoltées :', firstName, lastName, dateOfBirth, startDate, street, city, state, zipCode, department);
+    };
     return (
         <>
             <div className="view">
@@ -48,28 +27,28 @@ export default function View() {
 
                     <form onSubmit={handleSubmit} action="#" id="create-employee" className="view__form">
                         <label htmlFor="first-name" className="view__label">First Name</label>
-                        <input type="text" id="first-name" name="first-name" className="view__input"/>
+                        <input type="text" id="first-name" name="first-name" value={firstName} onChange={(e) => setFirstName(e.target.value)} className="view__input" />
 
                         <label htmlFor="last-name" className="view__label">Last Name</label>
-                        <input type="text" id="last-name" name="last-name" className="view__input"/>
+                        <input type="text" id="last-name" name="last-name" value={lastName} onChange={(e) => setLastName(e.target.value)} className="view__input"/>
 
                         <label htmlFor="date-of-birth" className="view__label">Date of Birth</label>
-                        <input type="date" id="date-of-birth" name="date-of-birth" className="view__input"/>
+                        <input type="date" id="date-of-birth" name="date-of-birth" value={dateOfBirth} onChange={(e) => setDateOfBirth(e.target.value)} className="view__input"/>
 
                         <label htmlFor="start-date" className="view__label">Start Date</label>
-                        <input type="date" id="start-date" name="start-date" className="view__input"/>
+                        <input type="date" id="start-date" name="start-date" value={startDate} onChange={(e) => setStartDate(e.target.value)} className="view__input"/>
 
                         <fieldset className="view__address">
                             <legend className="view__address-title">Address</legend>
 
                             <label htmlFor="street" className="view__label">Street</label>
-                            <input type="text" id="street" name="street" className="view__input"/>
+                            <input type="text" id="street" name="street" value={street} onChange={(e) => setStreet(e.target.value)} className="view__input"/>
 
                             <label htmlFor="city" className="view__label">City</label>
-                            <input type="text" id="city" name="city" className="view__input"/>
+                            <input type="text" id="city" name="city" value={city} onChange={(e) => setCity(e.target.value)} className="view__input"/>
 
                             <label htmlFor="state" className="view__label">State</label>
-                            <select name="state" id="state" className="view__select">
+                            <select name="state" id="state" value={state} onChange={(e) => setState(e.target.value)} className="view__select">
                             {usStates.map((state) => (
                                 <option key={state.abbreviation} value={state.abbreviation}>
                                     {state.name}
@@ -78,11 +57,11 @@ export default function View() {
                             </select>
 
                             <label htmlFor="zip-code" className="view__label">Zip Code</label>
-                            <input type="number" id="zip-code" name="zip-code" className="view__input"/>
+                            <input type="number" id="zip-code" name="zip-code" value={zipCode} onChange={(e) => setZipCode(e.target.value)} className="view__input"/>
                         </fieldset>
 
                         <label htmlFor="department" className="view__label">Department</label>
-                        <select name="department" id="department" className="view__select">
+                        <select name="department" id="department" value={department} onChange={(e) => setDepartment(e.target.value)} className="view__select">
                             <option value="">Select a department</option>
                             <option value="sales">Sales</option>
                             <option value="marketing">Marketing</option>
@@ -91,7 +70,7 @@ export default function View() {
                             <option value="legal">Legal</option>
                         </select>
 
-                        <button type="button" id="SaveForm" className="view__save-button">Save</button>
+                        <button type="submit" id="SaveForm" className="view__save-button">Save</button>
                     </form>
                 </div>
 
