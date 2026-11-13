@@ -1,7 +1,7 @@
 import './scss/_View.scss';
 import { useState } from 'react';
 import { usStates } from "./Donnee/UsState.tsx";
-import {GestionUser, GestionAdress, GestionToken, GestionConnexion} from './redux/DonneeSalarie.tsx';
+import {GestionUser, GestionAdress} from './redux/DonneeSalarie.tsx';
 
 export default function View() {
     
@@ -24,28 +24,29 @@ export default function View() {
                 lastName: lastName,
                 dateOfBirth: dateOfBirth,
                 startDate: startDate,
+            };
+
+            const FormDonneeAdress = {
                 street: street,
                 city: city,
                 state: state,
                 zipCode: zipCode,
                 department: department
-            };
+            }
 
             if (firstName === '' || lastName === '' || dateOfBirth === '' || startDate === '' || street === '' || city === '' || state === '' || zipCode === '' || department === '') {
-                console.error('Tous les champs sont requis.');
+                console.error('Tous les champs sont requis !');
                 return;
             }
 
-            console.log('Données récoltées :', FormDonneeEmployee);
+            console.log('Donnée Salarié récoltées :', FormDonneeEmployee);
+            console.log('Adresse récoltées :', FormDonneeAdress);
             
             try {
-                const stored = localStorage.getItem("DonneeUser");
-                let employees = stored ? JSON.parse(stored) : [];
-                employees.push(FormDonneeEmployee);
-                localStorage.setItem("DonneeUser", JSON.stringify(employees));
-                console.log('Données sauvegardées dans le localStorage.');
+                dispatch(GestionUser(FormDonneeEmployee));
+                dispatch(GestionAdress(FormDonneeAdress));
             } catch (error) {
-                console.error('Erreur lors de la sauvegarde des données dans le localStorage :', error);
+                console.error('Erreur lors de la transmission des données dans le store :', error);
             }
 
         }

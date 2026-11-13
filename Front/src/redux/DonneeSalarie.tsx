@@ -18,8 +18,6 @@ const DonneeSalarie = createSlice({
             zipCode : null,
             department : null,
         },
-        token: savedDonneForm || null,
-        isLoggedIn: false
     },
 
     reducers: { 
@@ -31,26 +29,11 @@ const DonneeSalarie = createSlice({
         GestionAdress(state, action) {
             state.adress = action.payload
         },
-        //! Token JWT
-        GestionToken(state, action) {
-            state.token = action.payload
-
-            if (action.payload) {
-                localStorage.setItem("token", action.payload)
-            } else {
-                localStorage.removeItem("token")
-            }
-        },
-
-        //! État de connexion
-        GestionConnexion(state, action) {
-            state.isLoggedIn = action.payload
-        }
     }
 })
 
 
-export const { GestionUser, GestionAdress, GestionToken, GestionConnexion } = DonneeSalarie.actions
+export const { GestionUser, GestionAdress} = DonneeSalarie.actions
 
 
 export default DonneeSalarie.reducer
