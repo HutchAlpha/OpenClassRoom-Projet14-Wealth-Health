@@ -2,6 +2,13 @@ import { useEffect, useState } from 'react';
 import './scss/_DetailSalarie.scss';
 import { useSelector } from 'react-redux';
 
+import DataTable, { Column } from 'datatables.net-react';
+import DtCore from 'datatables.net-dt';
+import 'datatables.net-dt/css';
+
+//! Association du cœur DataTables au composant React
+DataTable.use(DtCore);
+
 interface Employee {
     firstName: string;
     lastName: string;
@@ -51,36 +58,17 @@ export default function DetailSalarie() {
                 <p className="detail-salarie__empty">No employees found</p>
             ) : (
                 <div className="detail-salarie__table-container" role="region" aria-label="Liste des salariés, défilement horizontal possible" tabIndex={0}>
-                <table className="detail-salarie__table">
-                    <thead>
-                        <tr>
-                            <th id="First Name">First Name</th>
-                            <th id="Last Name">Last Name</th>
-                            <th id="Start Date">Start Date</th>
-                            <th id="Department">Department</th>
-                            <th id="Date of Birth">Date of Birth</th>
-                            <th id="Street">Street</th>
-                            <th id="City">City</th>
-                            <th id="State">State</th>
-                            <th id="Zip Code">Zip Code</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {employees.map((employee, index) => (
-                            <tr key={index}>
-                                <td>{employee.firstName}</td>
-                                <td>{employee.lastName}</td>
-                                <td>{employee.startDate}</td>
-                                <td>{employee.department}</td>
-                                <td>{employee.dateOfBirth}</td>
-                                <td>{employee.street}</td>
-                                <td>{employee.city}</td>
-                                <td>{employee.state}</td>
-                                <td>{employee.zipCode}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+                    <DataTable data={employees} className="display detail-salarie__table">
+                        <Column title="First Name" data="firstName" />
+                        <Column title="Last Name" data="lastName" />
+                        <Column title="Start Date" data="startDate" />
+                        <Column title="Department" data="department" />
+                        <Column title="Date of Birth" data="dateOfBirth" />
+                        <Column title="Street" data="street" />
+                        <Column title="City" data="city" />
+                        <Column title="State" data="state" />
+                        <Column title="Zip Code" data="zipCode" />
+                    </DataTable>
                 </div>
             )}
         </div>
