@@ -25,7 +25,7 @@ export default function DetailSalarie() {
 
     try {
         useEffect(() => {
-            if (user && adress) {
+            if (user !== null && adress !== null) {
                 const employeeData: Employee = {
                     firstName: user.firstName,
                     lastName: user.lastName,
@@ -50,6 +50,7 @@ export default function DetailSalarie() {
             {employees.length === 0 ? (
                 <p className="detail-salarie__empty">No employees found</p>
             ) : (
+                <div className="detail-salarie__table-container" role="region" aria-label="Liste des salariés, défilement horizontal possible" tabIndex={0}>
                 <table className="detail-salarie__table">
                     <thead>
                         <tr>
@@ -80,6 +81,7 @@ export default function DetailSalarie() {
                         ))}
                     </tbody>
                 </table>
+                </div>
             )}
         </div>
     );
