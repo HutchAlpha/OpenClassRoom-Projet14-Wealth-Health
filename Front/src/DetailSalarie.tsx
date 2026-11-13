@@ -23,6 +23,26 @@ export default function DetailSalarie() {
     console.log('Données salarié récupérées :', user);
     console.log('Adresse récupérée :', adress);
 
+    try {
+        useEffect(() => {
+            if (user && adress) {
+                const employeeData: Employee = {
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    startDate: user.startDate,
+                    department: user.department,
+                    dateOfBirth: user.dateOfBirth,
+                    street: adress.street,
+                    city: adress.city,
+                    state: adress.state,
+                    zipCode: adress.zipCode
+                };
+                setEmployees([employeeData]);
+            }
+        }, [user, adress]);
+    } catch (error) {
+        console.error('Erreur lors de la récupération des données :', error);
+    }
 
     return (
         <div className="detail-salarie">

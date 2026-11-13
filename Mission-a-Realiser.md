@@ -9,9 +9,9 @@ Convertir l'un des quatre plugins jQuery actuels en React. Remplacer les 3 plugi
 
 ## Pour le projet en JQUERY
 
-- Tu devras faire une nouvelle version des pages "Create Employee" et "Employee List" avec React.
-- Tu devras ajouter un système de gestion d'état (la version actuelle utilise un stockage local).
-- Tu dois aussi t'assurer que tout est cohérent au niveau du style. Pour cela, tu n'es pas obligé de refaire le design de l'application, mais si tu veux changer le style pour quelque chose de plus moderne, tu es le bienvenu.  
+V - Tu devras faire une nouvelle version des pages "Create Employee" et "Employee List" avec React.
+V - Tu devras ajouter un système de gestion d'état (la version actuelle utilise un stockage local).
+V - Tu dois aussi t'assurer que tout est cohérent au niveau du style. Pour cela, tu n'es pas obligé de refaire le design de l'application, mais si tu veux changer le style pour quelque chose de plus moderne, tu es le bienvenu.  
 - Si tu as le temps, tu peux tester le code React avec une suite de tests unitaires. Sinon, seuls des tests manuels sont nécessaires. 
 
 ## Conversion des plugins
