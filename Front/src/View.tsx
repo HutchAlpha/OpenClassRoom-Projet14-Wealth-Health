@@ -2,9 +2,12 @@ import './scss/_View.scss';
 import { useState } from 'react';
 import { usStates } from "./Donnee/UsState.tsx";
 import {GestionUser, GestionAdress} from './redux/DonneeSalarie.tsx';
+import {useDispatch } from 'react-redux'
 
 export default function View() {
     
+        const dispatch = useDispatch()
+
         const [firstName, setFirstName] = useState('');
         const [lastName, setLastName] = useState('');
         const [dateOfBirth, setDateOfBirth] = useState('');
@@ -15,44 +18,45 @@ export default function View() {
         const [zipCode, setZipCode] = useState('');
         const [department, setDepartment] = useState('');
     
+        
     const handleSubmit = (event) => {
         event.preventDefault();
 
         async function EmployeeData() {
-            const  FormDonneeEmployee = {
-                firstName: firstName,
-                lastName: lastName,
-                dateOfBirth: dateOfBirth,
-                startDate: startDate,
-            };
+        const FormDonneeEmployee = {
+            firstName: firstName.trim(),
+            lastName: lastName.trim(),
+            dateOfBirth,
+            startDate,
+            department
+        };
 
-            const FormDonneeAdress = {
-                street: street,
-                city: city,
-                state: state,
-                zipCode: zipCode,
-                department: department
-            }
+        const FormDonneeAdress = {
+            street: street.trim(),
+            city: city.trim(),
+            state,
+            zipCode: zipCode.trim()
+        };
 
-            if (firstName === '' || lastName === '' || dateOfBirth === '' || startDate === '' || street === '' || city === '' || state === '' || zipCode === '' || department === '') {
-                console.error('Tous les champs sont requis !');
-                return;
-            }
-
-            console.log('Donnée Salarié récoltées :', FormDonneeEmployee);
-            console.log('Adresse récoltées :', FormDonneeAdress);
-            
-            try {
-                dispatch(GestionUser(FormDonneeEmployee));
-                dispatch(GestionAdress(FormDonneeAdress));
-            } catch (error) {
-                console.error('Erreur lors de la transmission des données dans le store :', error);
-            }
-
+        if (firstName === '' || lastName === '' || dateOfBirth === '' || startDate === '' || street === '' || city === '' || state === '' || zipCode === '' || department === '') {
+            console.error('Tous les champs sont requis !');
+            return;
         }
 
+        console.log('Donnée Salarié récoltées :', FormDonneeEmployee);
+        console.log('Adresse récoltées :', FormDonneeAdress);
+        
+        try {
+            dispatch(GestionUser(FormDonneeEmployee));
+            dispatch(GestionAdress(FormDonneeAdress));
+        } catch (error) {
+            console.error('Erreur lors de la transmission des données dans le store :', error);
+        }
 
-        EmployeeData();
+    }
+
+
+    EmployeeData();
     };
     return (
         <>

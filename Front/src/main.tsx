@@ -1,37 +1,16 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { createBrowserRouter, Outlet } from "react-router";
-import { RouterProvider } from "react-router/dom";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router";
+import { Provider } from "react-redux";
+import App from "./App";
+import store from "./redux/Store";
 
-import './scss/App.scss';
-import Header from './Header.tsx';
-
-import View from './View.tsx';
-import DetailSalarie from './DetailSalarie.tsx'
-
-const router = createBrowserRouter([
-  {
-    element: (
-      <>
-        <Header />
-        <main>
-          <Outlet />
-        </main>
-      </>
-    ),
-    children: [
-      {
-        path: "/",
-        element: <View />,
-      },
-      {
-        path: "/salarie",
-        element: <DetailSalarie />,
-      },
-    ],
-  },
-]);
-
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </StrictMode>
 );

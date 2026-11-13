@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const savedDonneForm = localStorage.getItem("DonneeUser");
 
 const DonneeSalarie = createSlice({
     name: "DonneeUser",
