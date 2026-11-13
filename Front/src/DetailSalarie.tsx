@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './scss/_DetailSalarie.scss';
+import { useSelector } from 'react-redux';
 
 interface Employee {
     firstName: string;
@@ -14,31 +15,20 @@ interface Employee {
 }
 
 export default function DetailSalarie() {
-    const [employees, setEmployees] = useState<Employee[]>([]);
+   const [employees, setEmployees] = useState<Employee[]>([]);
 
-    useEffect(() => {
-        try {
-      
+    const user = useSelector((state: any) => state.bank.user);
+    const adress = useSelector((state: any) => state.bank.adress);
 
-        if (stored) {
-            const parsed = JSON.parse(stored);
+    console.log('Données salarié récupérées :', user);
+    console.log('Adresse récupérée :', adress);
 
-            if (Array.isArray(parsed)) {
-            setEmployees(parsed);
-            } else {
-            setEmployees([]);
-            }
-        }
-        } catch (error) {
-        console.error("Erreur lors de la lecture des employés :", error);
-        setEmployees([]);
-        }
-    }, []);
+
     return (
         <div className="detail-salarie">
             <h2 className="detail-salarie__title">Current Employees</h2>
             {employees.length === 0 ? (
-                <p className="detail-salarie__empty">No employees found.</p>
+                <p className="detail-salarie__empty">No employees found</p>
             ) : (
                 <table className="detail-salarie__table">
                     <thead>
