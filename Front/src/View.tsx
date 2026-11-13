@@ -2,11 +2,13 @@ import './scss/_View.scss';
 import { useState } from 'react';
 import { usStates } from "./Donnee/UsState.tsx";
 import {GestionUser, GestionAdress} from './redux/DonneeSalarie.tsx';
-import {useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
+
 
 export default function View() {
-    
-        const dispatch = useDispatch()
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
         const [firstName, setFirstName] = useState('');
         const [lastName, setLastName] = useState('');
@@ -45,10 +47,11 @@ export default function View() {
 
         console.log('Donnée Salarié récoltées :', FormDonneeEmployee);
         console.log('Adresse récoltées :', FormDonneeAdress);
-        
+
         try {
             dispatch(GestionUser(FormDonneeEmployee));
             dispatch(GestionAdress(FormDonneeAdress));
+            navigate('/salarie');
         } catch (error) {
             console.error('Erreur lors de la transmission des données dans le store :', error);
         }
@@ -88,10 +91,12 @@ export default function View() {
 
                             <label htmlFor="state" className="view__label">State</label>
                             <select name="state" id="state" value={state} onChange={(e) => setState(e.target.value)} className="view__select">
-                            {usStates.map((state) => (
-                                <option key={state.abbreviation} value={state.abbreviation}>
-                                    {state.name}
-                                </option>
+                                <option value="">Select a state</option>
+
+                                {usStates.map((state) => (
+                                    <option key={state.abbreviation} value={state.abbreviation}>
+                                        {state.name}
+                                    </option>
                                 ))}
                             </select>
 

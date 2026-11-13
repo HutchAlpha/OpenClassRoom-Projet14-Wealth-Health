@@ -18,7 +18,7 @@ export default function DetailSalarie() {
 
     useEffect(() => {
         try {
-        const stored = localStorage.getItem("DonneeUser");
+      
 
         if (stored) {
             const parsed = JSON.parse(stored);
